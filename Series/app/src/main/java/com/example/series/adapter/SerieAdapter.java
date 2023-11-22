@@ -1,9 +1,9 @@
 package com.example.series.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.series.R;
 import com.example.series.model.Serie;
-import com.example.series.vh.SerieVh;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.SerieVh>{
     public void setItems(ArrayList<Serie> items) {
         lista.addAll(items);
     }
-    public ArrayList<Serie> getTarefas() {
+    public List<Serie> getTarefas() {
         return lista;
     }
     public Serie getTarefa(int position) {
@@ -40,7 +39,8 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.SerieVh>{
 
     @Override
     public void onBindViewHolder(@NonNull SerieVh holder, int position) {
-
+        Serie serie = lista.get(position);
+        holder.bind(serie);
     }
 
 
@@ -51,9 +51,24 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.SerieVh>{
 
     class SerieVh extends RecyclerView.ViewHolder {
 
+        TextView nomeSerie, temporada, episodio, diaSemana, plataforma;
+
         public SerieVh(@NonNull View itemView) {
             super(itemView);
 
+            nomeSerie.findViewById(R.id.txtNome);
+            temporada.findViewById(R.id.txtTemporada);
+            episodio.findViewById(R.id.txtEpisodio);
+            diaSemana.findViewById(R.id.txtDiaSemana);
+            plataforma.findViewById(R.id.txtPlataforma);
+        }
+
+        public void bind(Serie serie) {
+            nomeSerie.setText(serie.getNome());
+            temporada.setText("Temporada" + serie.getTemporada());
+            episodio.setText("Episodio" + serie.getEpisodio());
+            diaSemana.setText(serie.getDiaSemana());
+            plataforma.setText(serie.getPlataforma());
         }
     }
 }
