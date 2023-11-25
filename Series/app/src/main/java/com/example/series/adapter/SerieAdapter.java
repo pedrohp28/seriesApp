@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.series.R;
 import com.example.series.model.Serie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.SerieVh>{
@@ -20,13 +19,10 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.SerieVh>{
     public SerieAdapter(List<Serie> lista) {
         this.lista = lista;
     }
-    public void setItems(ArrayList<Serie> items) {
-        lista.addAll(items);
-    }
-    public List<Serie> getTarefas() {
+    public List<Serie> getSeries() {
         return lista;
     }
-    public Serie getTarefa(int position) {
+    public Serie getSerie(int position) {
         return lista.get(position);
     }
 
@@ -56,17 +52,17 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.SerieVh>{
         public SerieVh(@NonNull View itemView) {
             super(itemView);
 
-            nomeSerie.findViewById(R.id.txtNome);
-            temporada.findViewById(R.id.txtTemporada);
-            episodio.findViewById(R.id.txtEpisodio);
-            diaSemana.findViewById(R.id.txtDiaSemana);
-            plataforma.findViewById(R.id.txtPlataforma);
+            nomeSerie = itemView.findViewById(R.id.txtNome);
+            temporada = itemView.findViewById(R.id.txtTemporada);
+            episodio = itemView.findViewById(R.id.txtEpisodio);
+            diaSemana = itemView.findViewById(R.id.txtDiaSemana);
+            plataforma = itemView.findViewById(R.id.txtPlataforma);
         }
 
         public void bind(Serie serie) {
             nomeSerie.setText(serie.getNome());
-            temporada.setText("Temporada" + serie.getTemporada());
-            episodio.setText("Episodio" + serie.getEpisodio());
+            temporada.setText("Temporada " + serie.getTemporada());
+            episodio.setText("Episodio " + serie.getEpisodio());
             diaSemana.setText(serie.getDiaSemana());
             plataforma.setText(serie.getPlataforma());
         }

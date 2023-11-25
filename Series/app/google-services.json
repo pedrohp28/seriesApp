@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "323543696948",
+    "project_id": "series-ca125",
+    "storage_bucket": "series-ca125.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323543696948:android:e4763cc55a1221e3f6ec61",
+        "android_client_info": {
+          "package_name": "com.example.series"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn1MTZfCzkHJu_Ugk7ZQ5iDsSjyx929kU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
