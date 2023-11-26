@@ -63,7 +63,7 @@ public class CadastroActivity extends AppCompatActivity {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            openMainActivity();
+                            finish();
                         }
                     }, 1000);
 
@@ -88,10 +88,5 @@ public class CadastroActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }

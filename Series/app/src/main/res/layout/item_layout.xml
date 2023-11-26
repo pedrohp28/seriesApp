@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
     android:background="@drawable/card_view_bg"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:backgroundTint="#F6F6F6"
+    app:cardBackgroundColor="#FFFFFF"
     tools:showIn="@layout/activity_lista_series">
 
     <RelativeLayout
@@ -13,14 +16,16 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorBackground">
 
         <TextView
             android:id="@+id/txtNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/txtPlataforma"
-            android:textSize="20sp"/>
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtTemporada"
@@ -28,7 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txtNome"
             android:layout_alignStart="@id/txtNome"
-            android:textSize="14sp"/>
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
 
         <TextView
             android:id="@+id/txtEpisodio"
@@ -36,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txtTemporada"
             android:layout_alignStart="@id/txtTemporada"
-            android:textSize="14sp"/>
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/txtPlataforma"
@@ -44,17 +52,20 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:singleLine="true"
             android:ellipsize="marquee"
-            android:textSize="14sp"/>
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/txtDiaSemana"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:textSize="14sp"/>
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/textColor"
+            android:textSize="14sp" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

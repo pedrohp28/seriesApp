@@ -29,31 +29,34 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/item_layout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:background="@drawable/background_lista"
         android:layout_below="@id/appBar"
         android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="3dp"/>
-    
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnfAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_add_24"
-        app:backgroundTint="@color/gray"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/plus"
+        app:backgroundTint="@color/blue" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnfSair"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_exit_to_app_24"
-        app:backgroundTint="@color/gray"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:hapticFeedbackEnabled="true"
+        android:src="@drawable/exit"
+        app:backgroundTint="@color/blue"
+        app:backgroundTintMode="src_in" />
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.series.model;
 
-public class Serie {
+import java.io.Serializable;
+
+public class Serie implements Serializable {
     private String key;
     private String nome;
     private Integer temporada;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".AddSeriesActivity">
+    tools:context=".AtualizarSerieActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -40,18 +40,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <EditText
-        android:id="@+id/edtTitulo"
+    <TextView
+        android:id="@+id/txtTituloUp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:background="@drawable/card_view_bg"
         android:ems="10"
         android:fontFamily="@font/martel_sans"
-        android:inputType="text"
         android:minHeight="48dp"
         android:textAlignment="center"
         android:textColor="#000000"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -73,13 +72,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/btnSalvarSerie"
+        android:id="@+id/btnSalvarSerieUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
         android:background="@drawable/rectangle"
         android:fontFamily="@font/martel_sans"
-        android:text="Salvar"
+        android:text="Atualizar"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -88,13 +87,29 @@
         app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btnVoltarUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="21dp"
+        android:fontFamily="@font/martel_sans"
+        android:text="Voltar"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSalvarSerieUp"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/martel_sans"
-        android:text="Nova Série"
+        android:text="Atualizar Série"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
@@ -103,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appBar" />
 
     <EditText
-        android:id="@+id/edtTemporada"
+        android:id="@+id/edtTemporadaUp"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -116,7 +131,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/edtTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloUp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -134,7 +149,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/edtEpisodio"
+        android:id="@+id/edtEpisodioUp"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -146,7 +161,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/edtTemporada" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTemporadaUp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -163,12 +178,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <Spinner
-        android:id="@+id/spinDias"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/spinDiasUp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/martel_sans"
         android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toEndOf="@+id/textView8"
@@ -189,31 +209,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <Spinner
-        android:id="@+id/spinPlataforma"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/spinPlataformaUp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/martel_sans"
         android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <Button
-        android:id="@+id/btnVoltar"
+    <ImageButton
+        android:id="@+id/ibtnPlusTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="21dp"
-        android:fontFamily="@font/martel_sans"
-        android:text="Voltar"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="46dp"
+        android:background="#A0D2FF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSalvarSerie"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/edtTemporadaUp"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloUp"
+        app:srcCompat="@drawable/add" />
 
+    <ImageButton
+        android:id="@+id/ibtnPlusEp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="#A0D2FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/edtEpisodioUp"
+        app:layout_constraintTop_toBottomOf="@+id/ibtnPlusTemp"
+        app:srcCompat="@drawable/add" />
 </androidx.constraintlayout.widget.ConstraintLayout>

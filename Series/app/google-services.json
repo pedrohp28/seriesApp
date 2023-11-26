@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "323543696948",
-    "project_id": "series-ca125",
-    "storage_bucket": "series-ca125.appspot.com"
+    "project_number": "210657363888",
+    "project_id": "series-91739",
+    "storage_bucket": "series-91739.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:323543696948:android:e4763cc55a1221e3f6ec61",
+        "mobilesdk_app_id": "1:210657363888:android:8ab1610ea9f0ca81e6b875",
         "android_client_info": {
           "package_name": "com.example.series"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCn1MTZfCzkHJu_Ugk7ZQ5iDsSjyx929kU"
+          "current_key": "AIzaSyADNb_zrV5b8FbbXxF7Bqsy1VA8qI9_d80"
         }
       ],
       "services": {

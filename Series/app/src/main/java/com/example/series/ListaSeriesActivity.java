@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,6 +18,12 @@ import com.example.series.model.Serie;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,30 +32,21 @@ import java.util.Collections;
 public class ListaSeriesActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
+    FirebaseDatabase database;
+    DatabaseReference userRef;
+    String usuarioId;
     public RecyclerView recyclerView;
     public FloatingActionButton btnAdd, btnSair;
     public SerieAdapter adapter;
-    Serie s = new Serie("Serie", 2, 3, "Quarta-Feira", "Netflix");
-    Serie s2 = new Serie("Serie2", 1, 5, "Sexta-Feira", "HBO Max");
-    ArrayList<Serie> list = new ArrayList<>(Arrays.asList(s, s2));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_series);
 
-        auth = FirebaseAuth.getInstance();
-        recyclerView = findViewById(R.id.recyclerView);
         btnSair = findViewById(R.id.btnfSair);
         btnAdd = findViewById(R.id.btnfAdd);
-
-        recyclerView.setHasFixedSize(true);
-        adapter = new SerieAdapter(list);
-        recyclerView.setAdapter(adapter);
-
-        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHandler(0, ItemTouchHelper.RIGHT));
-        helper.attachToRecyclerView(recyclerView);
-
+        auth = FirebaseAuth.getInstance();
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +55,7 @@ public class ListaSeriesActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        openMainActivity();
+                        finish();
                     }
                 }, 1000);
             }
@@ -70,14 +69,49 @@ public class ListaSeriesActivity extends AppCompatActivity {
         });
     }
 
-    private void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    private void buscarItens() {
+
+        usuarioId = FirebaseAuth.getInstance().getUid();
+        database = FirebaseDatabase.getInstance();
+        userRef = database.getReference("Usuario").child(usuarioId).child("Series");
+        Query tarefasQuery = userRef.orderByChild("nome");
+
+        tarefasQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Serie> series = new ArrayList<>();
+                for (DataSnapshot dados : snapshot.getChildren()) {
+
+                    Serie item = dados.getValue(Serie.class);
+                    item.setKey(dados.getKey());
+                    series.add(item);
+                }
+                adapter.setItems(series);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "Erro na busca" + error, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void openAddSeriesActivity() {
         Intent intent = new Intent(this, AddSeriesActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        adapter = new SerieAdapter();
+        buscarItens();
+        recyclerView.setAdapter(adapter);
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHandler(0, ItemTouchHelper.RIGHT));
+        helper.attachToRecyclerView(recyclerView);
     }
 
     private class ItemTouchHandler extends ItemTouchHelper.SimpleCallback{
@@ -98,12 +132,12 @@ public class ListaSeriesActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             String key = adapter.getSerie(viewHolder.getAdapterPosition()).getKey();
-//            userRef = database.getReference("Usuario").child(usuarioId).child("Tarefas").child(key);
-//            userRef.removeValue();
+            usuarioId = FirebaseAuth.getInstance().getUid();
+            database = FirebaseDatabase.getInstance();
+            userRef = database.getReference("Usuario").child(usuarioId).child("Series").child(key);
+            userRef.removeValue();
             adapter.getSeries().remove(viewHolder.getAdapterPosition());
             adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-//            usuarioId = FirebaseAuth.getInstance().getUid();
-//            database = FirebaseDatabase.getInstance();
         }
     }
 }
