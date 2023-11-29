@@ -105,6 +105,7 @@
         android:background="@drawable/rectangle"
         android:fontFamily="@font/martel_sans"
         android:text="Salvar"
+        android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
