@@ -17,9 +17,9 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:title="Series"
             android:background="@color/blue"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            android:title="MySeries" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
